@@ -3,32 +3,32 @@ import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 import BasicForm from './BasicForm';
 import RadioButton from './RadioButton';
 import CallCashFree from './CallCashFree';
+import DisplayResultModal from './DisplayResultModal';
+
+const originalState={
+    source: "reactsdk",
+    env: "test",
+    appId: "275432e3853bd165afbf5272",
+    orderId: String(Math.floor(Math.random() * 10000)),
+    //below values have been hardcoded for ease of testing
+    orderAmount: "100",
+    customerName: "A",
+    customerPhone: "1234512345",
+    customerEmail: "a@a.com",
+    paymentOption: null,
+    checkoutFields: ["appId", "orderId", "orderAmount", "customerName", "customerPhone", "customerEmail"], 
+    //checkoutFields: ["appId"],
+
+    //seamless
+    //paymentParams
+    payViaCashFree: false,
+    eventData: null,
+}
 
 export default class RenderForm extends Component{
     constructor(props){
         super(props);
-        const orderId = String(Math.floor(Math.random() * 10000));
-        this.state={
-            source: "reactsdk",
-            env: "test",
-            appId: "275432e3853bd165afbf5272",
-            orderId: orderId,
-            //below values have been hardcoded for ease of testing
-            orderAmount: "100",
-            customerName: "A",
-            customerPhone: "1234512345",
-            customerEmail: "a@a.com",
-            paymentOption: null,
-            checkoutFields: ["appId", "orderId", "orderAmount", "customerName", "customerPhone", "customerEmail"], 
-            //checkoutFields: ["appId"],
-
-            //seamless
-            //paymentParams
-            payViaCashFree: false,
-            eventData: null,
-
-
-        }
+        this.state = {...originalState}
         
     }
 
@@ -52,6 +52,12 @@ export default class RenderForm extends Component{
         console.log("onPayment called");
         console.log(eventData);
         this.setState({eventData, payViaCashFree: false});
+    }
+
+    resetState = () =>{
+        let rState = {...originalState};
+        rState.orderId = String(Math.floor(Math.random() * 10000));
+        this.setState(rState);
     }
 
 
@@ -150,6 +156,14 @@ export default class RenderForm extends Component{
 
     }
 
+    displayResult = () =>{
+        const {eventData} = this.state;
+
+        if(!eventData) return null;
+
+        return <DisplayResultModal content={JSON.stringify(eventData)}  onPress={this.resetState}/>
+    }
+
     render(){
         return (
             <View style={styles.container}>
@@ -158,6 +172,7 @@ export default class RenderForm extends Component{
             {this.renderPaymentOptions()}
             {this.renderPaymentButton()}
             {this.callCashFree()}
+            {this.displayResult()}
             </View>
             );
     }
