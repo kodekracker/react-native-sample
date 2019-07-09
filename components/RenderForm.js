@@ -32,9 +32,12 @@ export default class RenderForm extends Component{
 
     //Input events
     onChange = (field,val) => {
+        console.log("onChange")
+        console.log(field);
+        console.log(val);
         let obj = {}
         obj[field] = val;
-        this.setState({obj});
+        this.setState(obj);
     }
 
     onClick = (val) => {
@@ -44,6 +47,8 @@ export default class RenderForm extends Component{
     }
 
     onPayment = (eventData) => {
+        console.log("onPayment called");
+        console.log(eventData);
         this.setState({eventData, payViaCashFree: false});
     }
 
@@ -136,7 +141,10 @@ export default class RenderForm extends Component{
         delete stateObj.payViaCashFree;
         delete stateObj.eventData;
 
-        return <CallCashFree stateObj={stateObj} onPayment={this.onPayment}/>
+        console.log("stateObj being passed to cashfree");
+        console.log(stateObj);
+
+        return <CallCashFree {...stateObj} onPayment={this.onPayment}/>
 
     }
 
