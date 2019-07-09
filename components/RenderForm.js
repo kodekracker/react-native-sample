@@ -10,12 +10,14 @@ export default class RenderForm extends Component{
         const orderId = String(Math.floor(Math.random() * 10000));
         this.state={
             source: "reactsdk",
+            env: "test",
             appId: "275432e3853bd165afbf5272",
             orderId: orderId,
-            orderAmount: null,
-            customerName: null,
-            customerPhone: null,
-            customerEmail: null,
+            //below values have been hardcoded for ease of testing
+            orderAmount: "100",
+            customerName: "A",
+            customerPhone: "1234512345",
+            customerEmail: "a@a.com",
             paymentOption: null,
             checkoutFields: ["appId", "orderId", "orderAmount", "customerName", "customerPhone", "customerEmail"], 
             //checkoutFields: ["appId"],

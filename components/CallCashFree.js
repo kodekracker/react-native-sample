@@ -91,11 +91,12 @@ export default class CallCashfree extends Component{
 
         // get and clean propsObj
         let propsObj = {...this.props};
+        propsObj.tokenData = tokenData;
+        propsObj.callback = onPayment;
         delete propsObj.onPayment
         console.log("propsObj");
         console.log(propsObj);
-        return <CashfreePG {...propsObj} tokenData = {tokenData} callback = {onPayment}
-        />
+        return <CashfreePG {...propsObj}/>
 
     }
 
