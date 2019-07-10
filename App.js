@@ -49,15 +49,3 @@ const styles = StyleSheet.create({
     flex: 0.6,
   }
 });
-/*
-<Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- <View style={styles.container}>
-        <View style={styles.sample}>
-          <Sample style={styles.sample}></Sample>
-        </View>
-      </View>
-*/
