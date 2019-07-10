@@ -161,7 +161,7 @@ export default class RenderForm extends Component{
 
         if(!eventData) return null;
 
-        return <DisplayResultModal content={JSON.stringify(eventData)}  onPress={this.resetState}/>
+        return <DisplayResultModal content={eventData}  onPress={this.resetState}/>
     }
 
     render(){
@@ -187,6 +187,7 @@ const styles = StyleSheet.create({
       // justifyContent: 'center',
       paddingHorizontal: 10,
       paddingTop: 40,
+      alignContent: 'space-between',
 
     },
     button: {

@@ -13,7 +13,7 @@ export default class DisplayResultModal extends Component {
                 </Text>
                 <TouchableOpacity style={styles.buttonStyle}
                 onPress={onPress}>
-                <Text style={{textAlign: 'center'}}>
+                <Text style={{textAlign: 'center', color: 'white'}}>
                     close
                 </Text>
                 </TouchableOpacity>
